@@ -111,24 +111,24 @@ def reciclaveis():
     "Pratinhos de festa descartáveis",
     "Envelopes de carta",
     "Embalagens de fast food",
-    'Papel'
-    'Canudos'
-    'Sacolas'
-    'Copos de plástico'
-    'Copos de plastico'
+    "Papel",
+    "Canudos",
+    "Sacolas",
+    "Sacola",
+    "Copos de plástico",
+    "Copos de plastico"
              ]
-    palavra = entrada.get()
+    palavra = entrada.get().capitalize()
     if palavra in lista:
         txt.delete('1.0', END)
-        txt.insert(END, f'O Objeto {palavra} é Descartável/Reciclavél!\nVerifique de lavar bem este objeto antes de descarta-lo.\n Obrigado!')
+        txt.insert(END, f'O Objeto {palavra} é Descartável/Reciclavél!\nVerifique de lavar bem este objeto antes de descarta-lo.\nObrigado!')
+    elif entrada.get() == '':
+        txt.delete('1.0', END)
+        txt.insert(END, f'Voce precisa inserir um item para o sistema verificar !')
     else:
         txt.delete('1.0', END)
-        txt.insert(END, f'O Objeto {palavra} Não é reciclável.\n Lembre-se de Verificar o melhor local para o seu Descarte!')
+        txt.insert(END, f'O Objeto {palavra} Não é reciclável.\nLembre-se de Verificar o melhor local para o seu Descarte!.\nCaso houver duvidas, entre em contato com o administrador.')
 def open_file():
-    filename = filedialog.askopenfilename(initialdir=os.getcwd(), title="Resíduos e Informações", filetypes=(("Arquivos de Texto", "*.txt"), ("Todos os arquivos", "*.*")))
-    if filename:
-        with open(filename, 'r') as file:
-            content = file.read()
         file_window = Toplevel(janu)
         file_window.title("Importãncia do destino correto do lixo")
         text_widget = Text(file_window, height=20, width=100, background='#07FBA6', font=('Arial',14))
@@ -143,16 +143,16 @@ def mostrar_horario():
 
 janu = Tk()
 janu.title('Descarte de Resíduos')
-janu.geometry('520x450')
+janu.geometry('520x250')
 janu.iconbitmap('')
 janu.resizable(False, False)
-janu.configure(background='#FBFF04')
+janu.configure(background='black')
 
-cred = Button(janu, text='P.Konorath', bg='#07F7FB', fg='#000', font=('Arial', 13))
-cred.place(x=417, y=32)
+cred = Button(janu, text='P.K0m', bg='#07F7FB', fg='#000', font=('Arial', 11))
+cred.place(x=380, y=32)
 
-cred2 = Button(janu, text='G. Blasio', bg='#C707FB', fg='#000', font=('Arial', 13))
-cred2.place(x=320, y=32)
+cred2 = Button(janu, text='G. Blasio', bg='#C707FB', fg='#000', font=('Arial', 11))
+cred2.place(x=290, y=32)
 
 sair_botao = Button(janu, text='Sair', bg='red', fg='white', font=('Arial', 12), command=janu.quit)
 sair_botao.place(x=115, y=32)
@@ -160,17 +160,20 @@ sair_botao.place(x=115, y=32)
 saiba_mais = Button(janu, text='Saiba mais!', bg='brown', fg='white', font=('Arial', 12), command=open_file)
 saiba_mais.place(x=5, y=32)
 
-executar = Button(janu, text='Pesquisar', bg='#3FFA22', fg='#000', height=1, font=('Arial', 12), command=reciclaveis)
-executar.place(x=417, y=0)
+executar = Button(janu, text='go', bg='#3FFA22', fg='#000', font=('Arial', 12), command=reciclaveis)
+executar.place(x=467, y=6)
 
 entrada = Entry(janu, bg='white', fg='black', width=45, font=('Arial', 13))
 entrada.place(x=5, y=5)
 
-ajuda = Label(janu, text='Descubra a melhor maneira de descartar seu Lixo!', fg='#FFF', bg='#2604FF', font=('Arial', 14), width=50)
-ajuda.place(x=2, y=70)
+ajuda = Label(janu, text='Descubra a melhor maneira de descartar seu Lixo!', fg='#FFF', bg='#2604FF', font=('Arial', 14), width=60)
+ajuda.pack(pady=70)
 
-txt = Text(janu, background='#FB8507', height=19, font=('Arial', 14), fg='#FFF')
+txt = Text(janu, background='pink', height=5, font=('Arial', 14), fg='Black')
 txt.place(x=1, y=100)
+
+frase = Label(janu, text='Um pequeno gesto, um grande impacto: recicle!', fg='#FFF', bg='#197d05', font=('Arial', 12), width=60)
+frase.pack(pady=25)
 
 
 horario_label = Label(janu, text='', font=('Arial', 18))
