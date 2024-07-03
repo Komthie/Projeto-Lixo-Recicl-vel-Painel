@@ -95,12 +95,30 @@ def reciclaveis():
     else:
         txt.delete('1.0', END)
         txt.insert(END, f'O Objeto {palavra} Não é reciclável.\nLembre-se de Verificar o melhor local para o seu Descarte!.\nCaso houver duvidas, entre em contato com o administrador.')
+
 def open_file():
         file_window = Toplevel(janu)
         file_window.title("Importãncia do destino correto do lixo")
-        text_widget = Text(file_window, height=20, width=100, background='#07FBA6', font=('Arial',14))
-        text_widget.insert(END, content)
-        text_widget.pack()
+        file_window.geometry('450x250')
+        file_window.resizable(False, False)
+        file_window.configure(background='black')
+         
+        text_label = Label(file_window, text="Descartar o lixo corretamente é fundamental para a saúde do meio ambiente e das pessoas.", font=("Arial", 12), fg="white", bg='black', justify="left", wraplength=400)
+        text_label.pack(padx=10, pady=10)
+
+
+        linkedin_link_button = Button(file_window, text="LinkedIn - Pedro Konorath", fg="purple", bg='black', cursor="hand2", command=lambda: open_url("https://www.linkedin.com/in/pedro-konorath-de-moraes-736979278/"))
+        linkedin_link_button.pack(padx=15, pady=15)
+
+          
+        linkedin_link_button2 = Button(file_window, text="LinkedIn - Gabriel Biasio", bg='black', fg="green", cursor="hand2", command=lambda: open_url("https://www.linkedin.com/in/gabriel-biasioo/"))
+        linkedin_link_button2.pack(padx=7, pady=7)
+
+        github_link_button = Button(file_window, text="GitHub - Komthie", bg='black', fg="black", cursor="hand2", command=lambda: open_url("https://github.com/Komthie"))
+        github_link_button.pack()
+
+
+        file_window.loop()
 
 def mostrar_horario():
     horario_atual = datetime.datetime.now().strftime('%H:%M:%S')
